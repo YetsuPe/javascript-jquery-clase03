@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="es_PE">
+  <head>
+		<title>Javascript con jQuery</title>
+		<script src="jquery-1.9.1.min.js"></script>
+		<script>
+			$(document).on("ready", function(){
+				var mensaje = "Preparado";
+				//alert(mensaje);
+				var n1 = parseInt("5");
+				var n2 = parseInt("4");
+				//alert(n1+n2);
+				console.log("Mensaje de Consola");
+				//$("body").html("<h1>CABECERA H1</h1>");
+				
+			});
+
+		</script>
+		<style>
+			.estilo1{
+				font-size:5em;
+				background-color:#00f;
+				color:#fff;
+			}
+		</style>
+	</head>
+	<body>
+		<button type="button" id="add">Add</button>
+		<button type="button" id="rem">Rem</button>
+		<button type="button" id="mostrar">Mostrar</button>
+		<button type="button" id="ocultar">Ocultar</button>
+		<button type="button" id="slideDown">slideDown</button>
+		<button type="button" id="slideUp">slideUP</button>
+		<button type="button" id="fadeIn">FadeIN</button>
+		<button type="button" id="fadeOut">FadeOUT</button>
+		<button type="button" id="muchos">Muchos</button>
+		<button type="button" id="animar">Animar</button>
+		<h5 id="cab">Cabecera H5</h5>
+		<a href="#" id="vinculo">vinculo</a>
+
+		<div id="texto">TEXTO</div>
+		<input type="text" id="txtContenido" value="" placeholder="Evento de teclado" />
+		<script>
+			var valor = $("h5#cab").html();
+			console.log(valor);
+			$("h5#cab").css("border","1px solid #000");
+			
+
+			$("button#add").click(function(){
+				$("h5#cab").addClass("estilo1");
+			});
+			$("button#rem").click(function(){
+				$("h5#cab").removeClass("estilo1");
+			});
+			$("button#mostrar").click(function(){
+				$("h5#cab").show(600);
+			});
+			$("button#ocultar").click(function(){
+				$("h5#cab").hide(3000);
+			});
+			$("button#slideDown").click(function(){
+				$("h5#cab").slideDown(2000);
+			});
+			$("button#slideUp").click(function(){
+				$("h5#cab").slideUp(2000);
+			});
+			$("button#fadeIn").click(function(){
+				$("h5#cab").fadeIn();
+			});
+			$("button#fadeOut").click(function(){
+				$("h5#cab").fadeOut();
+			});
+			$("button#muchos").click(function(){
+				$("h5#cab").hide(300).delay(3000).slideDown().delay(2000).slideUp().delay(5000).fadeIn().delay(7000).fadeOut();
+			});
+			$("button#muchos").hover(function(){
+				$("h5#cab").hide(300).delay(3000).slideDown().delay(2000).slideUp().delay(5000).fadeIn().delay(7000).fadeOut();
+			});
+			$("a#vinculo").click(function(){
+				console.log($(this).html());
+				$("h5#cab").html(" ---> AGREGADO MENSAJE DESDE EVENTO CLICK");
+			});
+			$("a#vinculo").dblclick(function(){
+				console.log($(this).html());
+				$("h5#cab").html(" ---> AGREGADO MENSAJE DESDE EVENTO DOBLE CLICK");
+			});
+
+			$("input#txtContenido").keyup(function(e){
+				if(e.keyCode == 13){
+					$("div#texto").html("presiono enter");
+				}else{
+					$("div#texto").html($(this).val());
+				}
+			});
+
+			$("button#animar").click(function(){
+				$("h5#cab").animate({
+					fontSize  : "+=20px",
+					opacity   : 0.5
+				},5000, function(){
+					$(this).html("Animacion completada");
+				});
+			});
+
+
+		</script>
+	</body>
+</html>
